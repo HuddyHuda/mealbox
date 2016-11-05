@@ -1,0 +1,19 @@
+<h1>Ingredients#index</h1>
+<p>Find me in app/views/ingredients/index.html.erb</p>
+
+<%= link_to 'Add Ingredient', new_ingredient_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Unit</th>
+    <th>Cost</th>
+  </tr>
+
+  <% @ingredients.each do |ingredient| %>
+    <tr>
+      <td><%= ingredient.name %></td>
+      <td><%= ingredient.unit %></td>
+      <td><%= ingredient.cost %></td>
+    </tr>
+  <% end %>
+</table>

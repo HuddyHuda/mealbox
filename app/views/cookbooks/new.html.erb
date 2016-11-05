@@ -1,0 +1,32 @@
+<h1>Cookbook#new</h1>
+<p>Find me in app/views/cookbooks/new.html.erb</p>
+
+<%= form_for @cookbook do |f| %>
+  <% if @cookbook.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@cookbook.errors.count, "error") %> prohibited
+        this cookbook from being saved:
+      </h2>
+      <ul>
+        <% @cookbook.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :cuisine %><br>
+    <%= f.text_field :cuisine %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', cookbooks_path %>
