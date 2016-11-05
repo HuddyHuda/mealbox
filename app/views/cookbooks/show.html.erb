@@ -1,0 +1,44 @@
+<h1>Cookbook#show</h1>
+<p>Find me in app/views/cookbooks/show.html.erb</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cookbook.name %>
+</p>
+
+<p>
+  <strong>Cuisine:</strong>
+  <%= @cookbook.cuisine %>
+</p>
+
+<h2>Ingredients</h2>
+<% @cookbook.recipes.each do |recipe| %>
+  <p>
+    <strong>Ingredient:</strong>
+    <%= recipe.ingredient.name%>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <%= recipe.quantity %>
+  </p>
+
+  <p>
+    <%= link_to 'Destroy Ingredient', [recipe.cookbook, recipe], method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
+
+<h2>Add ingredients to recipe:</h2>
+<%= form_for([@cookbook, @cookbook.recipes.build]) do |f| %>
+
+  <%= f.collection_select(:ingredient_id, @ingredients, :id, :name ) %>
+  <p>
+    <%= f.label :quantity %><br>
+    <%= f.text_area :quantity %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', cookbooks_path %>

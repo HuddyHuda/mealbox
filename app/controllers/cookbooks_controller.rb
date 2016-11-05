@@ -2,7 +2,10 @@ class CookbooksController < ApplicationController
   def index
     @cookbooks = Cookbook.all
   end
-
+  def show
+    @cookbook = Cookbook.find(params[:id])
+    @ingredients  = Ingredient.all
+  end
   def new
     @cookbook = Cookbook.new
   end
